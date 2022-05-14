@@ -316,7 +316,7 @@ class _VoterHomePageState extends State<VoterHomePage> {
                         String selectedParty = '';
                         List<String> nameOfParties = [];
                         regions
-                            .where(regionNumber)
+                            .where('regionNumber', isEqualTo: regionNumber)
                             .limit(1)
                             .get()
                             .then((value) {
