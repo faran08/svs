@@ -6,6 +6,7 @@ import 'dart:math';
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -209,9 +210,16 @@ class _VoterHomePageState extends State<VoterHomePage> {
         child: ListView(
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                  child: Image.asset(
+                    'assets/logo.jpg',
+                    width: 50,
+                  ),
+                ),
                 Padding(
                   padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
                   child: Text(
@@ -845,8 +853,25 @@ class _VoterHomePageState extends State<VoterHomePage> {
                                                                 'cryptoKey': key
                                                               }).then(
                                                                 (value) {
-                                                                  takePictureOne();
-                                                                  takePictureTwo();
+                                                                  if (defaultTargetPlatform ==
+                                                                          TargetPlatform
+                                                                              .iOS ||
+                                                                      defaultTargetPlatform ==
+                                                                          TargetPlatform
+                                                                              .android) {
+                                                                    takePictureOne();
+                                                                    takePictureTwo();
+                                                                  } else if (defaultTargetPlatform == TargetPlatform.linux ||
+                                                                      defaultTargetPlatform ==
+                                                                          TargetPlatform
+                                                                              .macOS ||
+                                                                      defaultTargetPlatform ==
+                                                                          TargetPlatform
+                                                                              .windows) {
+                                                                    // Some desktop specific code there
+                                                                  } else {
+                                                                    // Some web specific code there
+                                                                  }
                                                                 },
                                                               );
                                                             },

@@ -17,19 +17,13 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -42,11 +36,31 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyAdg9oARU9mOja5xMfAUuyllFdN402hYXc',
+    appId: '1:77553642458:web:5142ee90a8f15e29a2aee3',
+    messagingSenderId: '77553642458',
+    projectId: 'svs1-6478f',
+    authDomain: 'svs1-6478f.firebaseapp.com',
+    storageBucket: 'svs1-6478f.appspot.com',
+    measurementId: 'G-1S3N0JTKLR',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCXCv8Lc6NKLIqPMCsSi1iyVaaZHo7RXkI',
     appId: '1:77553642458:android:bb28841056728498a2aee3',
     messagingSenderId: '77553642458',
     projectId: 'svs1-6478f',
     storageBucket: 'svs1-6478f.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyCkBCvnsaBVpk9UW1GSYwY07hQPOCfh_Ac',
+    appId: '1:77553642458:ios:53fe7e23a2e3b9a8a2aee3',
+    messagingSenderId: '77553642458',
+    projectId: 'svs1-6478f',
+    storageBucket: 'svs1-6478f.appspot.com',
+    iosClientId: '77553642458-eav15du2q4qca6o22q3q5f1o566j78sj.apps.googleusercontent.com',
+    iosBundleId: 'com.example.svs',
   );
 }

@@ -1,3 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -6,6 +10,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 import 'package:svs/AdminLogin.dart';
 import 'package:svs/VoterHomePage.dart';
+import 'package:flutter/foundation.dart';
 
 import 'Global.dart';
 import 'firebase_options.dart';
@@ -18,7 +23,7 @@ Future<void> main() async {
   app = await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform);
   storage = FirebaseStorage.instance;
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -27,7 +32,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Colors.black);
+    if (defaultTargetPlatform == TargetPlatform.iOS ||
+        defaultTargetPlatform == TargetPlatform.android) {
+      FlutterStatusbarcolor.setStatusBarColor(Colors.black);
+    } else if (defaultTargetPlatform == TargetPlatform.linux ||
+        defaultTargetPlatform == TargetPlatform.macOS ||
+        defaultTargetPlatform == TargetPlatform.windows) {
+      // Some desktop specific code there
+    } else {
+      // Some web specific code there
+    }
+    
+
     return MaterialApp(
       title: 'Secure Voting System',
       debugShowCheckedModeBanner: false,
@@ -44,7 +60,7 @@ class MyApp extends StatelessWidget {
           // is not restarted.
 
           ),
-      home: const VoterHomePage(),
+      home: const AdminLogin(),
     );
   }
 }
