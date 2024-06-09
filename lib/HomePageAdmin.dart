@@ -40,14 +40,20 @@ class _HomePageAdminState extends State<HomePageAdmin> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-          colors: [
-            mainColor,
-            secondaryColor,
-          ],
-        )),
+            image: DecorationImage(
+                image: Image.asset('assets/backgr.jpg').image,
+                colorFilter: ColorFilter.mode(
+                    Colors.blueAccent.shade100, BlendMode.darken),
+                fit: BoxFit.fill)
+            //     gradient: LinearGradient(
+            //   begin: Alignment.topRight,
+            //   end: Alignment.bottomLeft,
+            //   colors: [
+            //     mainColor,
+            //     secondaryColor,
+            //   ],
+            // )),
+            ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -84,13 +90,25 @@ class _HomePageAdminState extends State<HomePageAdmin> {
               ],
             ),
             Center(
+              child: ClipOval(
+                child: SizedBox.fromSize(
+                  size: Size.fromRadius(100), // Image radius
+                  child: Image.asset(
+                    'assets/logo.jpg',
+                    width: 200,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
+            Center(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                 child: TextButton(
                     style: TextButton.styleFrom(
                         padding: const EdgeInsets.fromLTRB(0, 12, 0, 12),
                         primary: Colors.black,
-                        backgroundColor: tertiaryColor,
+                        backgroundColor: secondaryColor,
                         onSurface: Colors.black,
                         shape: const RoundedRectangleBorder(
                             borderRadius:

@@ -42,7 +42,6 @@ class MyApp extends StatelessWidget {
     } else {
       // Some web specific code there
     }
-    
 
     return MaterialApp(
       title: 'Secure Voting System',

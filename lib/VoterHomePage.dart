@@ -198,15 +198,7 @@ class _VoterHomePageState extends State<VoterHomePage> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-          colors: [
-            mainColor,
-            secondaryColor,
-          ],
-        )),
+        decoration: globalDecoration,
         child: ListView(
           children: [
             Row(

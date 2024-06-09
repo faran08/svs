@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.svs">
    <application
-        android:label="svs"
+        android:label="Secure Voting System"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

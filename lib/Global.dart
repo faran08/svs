@@ -14,14 +14,20 @@ Color outlineColor = Colors.white;
 String globalParentID = '';
 String globalBusRegistrationNumber = '';
 BoxDecoration globalDecoration = BoxDecoration(
-    gradient: LinearGradient(
-  begin: Alignment.topRight,
-  end: Alignment.bottomLeft,
-  colors: [
-    mainColor,
-    secondaryColor,
-  ],
-));
+    image: DecorationImage(
+        image: Image.asset('assets/backgr.jpg').image,
+        colorFilter:
+            ColorFilter.mode(Colors.blueAccent.shade100, BlendMode.darken),
+        fit: BoxFit.fill)
+//     gradient: LinearGradient(
+//   begin: Alignment.topRight,
+//   end: Alignment.bottomLeft,
+//   colors: [
+//     mainColor,
+//     secondaryColor,
+//   ],
+// )
+    );
 
 TextStyle getTextInputStyle() {
   return TextStyle(color: textColor, fontSize: 15);
